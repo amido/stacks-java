@@ -10,18 +10,18 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuUpdatedEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.CategoryAlreadyExistsException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.CategoryDoesNotExistException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.stereotype.Component;
 
 /** @author ArathyKrishna */
 @Component
 public class UpdateCategoryHandler extends MenuBaseCommandHandler<UpdateCategoryCommand> {
 
-  public UpdateCategoryHandler(MenuRepositoryAdapter menuRepositoryAdapter, ApplicationEventPublisher publisher) {
+  public UpdateCategoryHandler(
+      MenuRepositoryAdapter menuRepositoryAdapter, ApplicationEventPublisher publisher) {
     super(menuRepositoryAdapter, publisher);
   }
 

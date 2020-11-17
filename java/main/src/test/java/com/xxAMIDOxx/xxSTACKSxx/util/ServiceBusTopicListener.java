@@ -1,5 +1,7 @@
 package com.xxAMIDOxx.xxSTACKSxx.util;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.azure.servicebus.ExceptionPhase;
@@ -10,12 +12,9 @@ import com.microsoft.azure.servicebus.ReceiveMode;
 import com.microsoft.azure.servicebus.SubscriptionClient;
 import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
 import com.microsoft.azure.servicebus.primitives.ServiceBusException;
-
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ServiceBusTopicListener {
 

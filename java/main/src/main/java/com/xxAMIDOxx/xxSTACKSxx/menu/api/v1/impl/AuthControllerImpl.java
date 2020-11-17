@@ -3,6 +3,7 @@ package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.AuthController;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.request.GenerateTokenRequest;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.GenerateTokenResponse;
+import javax.validation.Valid;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -10,8 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import javax.validation.Valid;
 
 @RestController
 public class AuthControllerImpl implements AuthController {

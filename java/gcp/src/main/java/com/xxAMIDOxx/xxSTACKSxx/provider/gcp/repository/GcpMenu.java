@@ -2,16 +2,15 @@ package com.xxAMIDOxx.xxSTACKSxx.provider.gcp.repository;
 
 import com.google.cloud.firestore.annotation.DocumentId;
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Category;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.cloud.gcp.data.firestore.Document;
 import org.springframework.data.annotation.Id;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
@@ -20,9 +19,7 @@ import java.util.stream.Collectors;
 @Document(collectionName = "Menu")
 public class GcpMenu {
 
-  @Id
-  @DocumentId
-  private String id;
+  @Id @DocumentId private String id;
 
   private String restaurantId;
 

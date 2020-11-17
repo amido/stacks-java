@@ -1,23 +1,23 @@
-package com.xxAMIDOxx.xxSTACKSxx.menu.service.impl;
+package com.xxAMIDOxx.xxSTACKSxx.provider.gcp.service;
 
-import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
-import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import com.xxAMIDOxx.xxSTACKSxx.menu.service.MenuQueryService;
-import com.xxAMIDOxx.xxSTACKSxx.provider.gcp.service.GcpMenuQueryService;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-
-import java.util.List;
-
-import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenus;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
+
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Category;
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
+import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import com.xxAMIDOxx.xxSTACKSxx.menu.service.MenuQueryService;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 @Tag("Unit")
 public class GcpMenuQueryServiceTest {
@@ -43,5 +43,23 @@ public class GcpMenuQueryServiceTest {
 
     // Then
     then(actualResults).isEqualTo(results);
+  }
+
+  public static List<Menu> createMenus(int count) {
+    List<Menu> menuList = new ArrayList<>();
+    for (int i = 0; i < count; i++) {
+      menuList.add(createMenu(i));
+    }
+    return menuList;
+  }
+
+  public static Menu createMenu(int counter) {
+    return new Menu(
+        UUID.randomUUID().toString(),
+        UUID.randomUUID().toString(),
+        counter + " Menu",
+        counter + " Menu Description",
+        new ArrayList<Category>(),
+        true);
   }
 }

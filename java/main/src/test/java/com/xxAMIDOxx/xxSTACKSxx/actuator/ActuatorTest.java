@@ -1,8 +1,12 @@
 package com.xxAMIDOxx.xxSTACKSxx.actuator;
 
+import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
+import static org.assertj.core.api.BDDAssertions.then;
+
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import java.util.Map;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +17,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.TestPropertySource;
-
-import java.util.Map;
-
-import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
-import static org.assertj.core.api.BDDAssertions.then;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = {"management.port=0"})
@@ -31,8 +30,7 @@ class ActuatorTest {
 
   @Autowired private TestRestTemplate testRestTemplate;
 
-  @MockBean
-  private MenuRepositoryAdapter menuRepositoryAdapter;
+  @MockBean private MenuRepositoryAdapter menuRepositoryAdapter;
 
   @Test
   void shouldReturn200WhenSendingRequestToHealthEndpoint() {

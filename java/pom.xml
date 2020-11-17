@@ -16,13 +16,6 @@
     <name>xxSTACKSxx-api</name>
     <description>Demo project for Java</description>
 
-<!--    <modules>-->
-<!--        <module>gcp</module>-->
-<!--        <module>main</module>-->
-<!--        <module>core</module>-->
-<!--        <module>azure</module>-->
-<!--    </modules>-->
-
     <properties>
         <java.version>11</java.version>
         <org.projectlombok.version>1.18.0</org.projectlombok.version>
@@ -44,7 +37,6 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <owasp-dependency-check-plugin.version>6.0.2</owasp-dependency-check-plugin.version>
         <auth0-spring-security-api.version>1.4.0</auth0-spring-security-api.version>
-        <spring-cloud-gcp-firestore.version>1.2.5.RELEASE</spring-cloud-gcp-firestore.version>
 
         <fmt-maven-plugin.version>2.10</fmt-maven-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
@@ -120,12 +112,6 @@
             <artifactId>applicationinsights-logging-logback</artifactId>
             <version>${applicationinsights.version}</version>
             <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-gcp-starter-data-firestore</artifactId>
-            <version>${spring-cloud-gcp-firestore.version}</version>
         </dependency>
 
         <dependency>

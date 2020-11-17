@@ -9,11 +9,10 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.MenuNotFoundException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public abstract class MenuBaseCommandHandler<T extends MenuCommand> implements CommandHandler<T> {
 

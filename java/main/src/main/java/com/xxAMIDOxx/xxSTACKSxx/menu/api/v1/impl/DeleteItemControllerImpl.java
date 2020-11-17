@@ -1,14 +1,13 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 
+import static org.springframework.http.HttpStatus.OK;
+
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.DeleteItemController;
 import com.xxAMIDOxx.xxSTACKSxx.menu.commands.DeleteItemCommand;
 import com.xxAMIDOxx.xxSTACKSxx.menu.handlers.DeleteItemHandler;
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
-
-import static org.springframework.http.HttpStatus.OK;
 
 /** @author ArathyKrishna */
 @RestController

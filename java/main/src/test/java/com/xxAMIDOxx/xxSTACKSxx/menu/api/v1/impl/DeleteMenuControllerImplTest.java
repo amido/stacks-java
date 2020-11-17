@@ -1,11 +1,23 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 
+import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
+import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
+import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getRequestHttpEntity;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
+
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
 import com.xxAMIDOxx.xxSTACKSxx.core.api.dto.ErrorResponse;
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import static org.assertj.core.api.BDDAssertions.then;
+import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +30,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.util.Optional;
-import java.util.UUID;
-
-import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
-import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
-import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getRequestHttpEntity;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.OK;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration(

@@ -7,13 +7,12 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuCreatedEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.MenuAlreadyExistsException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CreateMenuHandler implements CommandHandler<CreateMenuCommand> {

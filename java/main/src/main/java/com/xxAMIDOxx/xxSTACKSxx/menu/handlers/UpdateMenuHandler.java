@@ -6,18 +6,18 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuUpdatedEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.stereotype.Component;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateMenuHandler extends MenuBaseCommandHandler<UpdateMenuCommand> {
 
   public UpdateMenuHandler(
-      MenuRepositoryAdapter menuRepositoryAdapter, ApplicationEventPublisher applicationEventPublisher) {
+      MenuRepositoryAdapter menuRepositoryAdapter,
+      ApplicationEventPublisher applicationEventPublisher) {
     super(menuRepositoryAdapter, applicationEventPublisher);
   }
 

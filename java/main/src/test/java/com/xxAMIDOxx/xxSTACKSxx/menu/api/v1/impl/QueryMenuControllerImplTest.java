@@ -1,35 +1,5 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 
-import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
-import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
-import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.MenuDTO;
-import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.SearchMenuResult;
-import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.SearchMenuResultItem;
-import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Category;
-import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Item;
-import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
-import com.xxAMIDOxx.xxSTACKSxx.menu.mappers.DomainToDtoMapper;
-import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.test.context.ActiveProfiles;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
 import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
 import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenus;
 import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
@@ -43,6 +13,35 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
+import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
+import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.MenuDTO;
+import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.SearchMenuResult;
+import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.SearchMenuResultItem;
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Category;
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Item;
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
+import com.xxAMIDOxx.xxSTACKSxx.menu.mappers.DomainToDtoMapper;
+import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration(
@@ -64,7 +63,8 @@ class QueryMenuControllerImplTest {
   void listMenusAndPagination() {
 
     // Given
-    when(menuRepositoryAdapter.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(createMenus(1)));
+    when(menuRepositoryAdapter.findAll(any(Pageable.class)))
+        .thenReturn(new PageImpl<>(createMenus(1)));
 
     int pageNumber = 5;
     int pageSize = 6;
@@ -105,7 +105,8 @@ class QueryMenuControllerImplTest {
     SearchMenuResult expectedResponse =
         new SearchMenuResult(DEFAULT_PAGE_SIZE, DEFAULT_PAGE_NUMBER, expectedMenuList);
 
-    when(menuRepositoryAdapter.findAllByRestaurantId(eq(restaurantId.toString()), any(Pageable.class)))
+    when(menuRepositoryAdapter.findAllByRestaurantId(
+            eq(restaurantId.toString()), any(Pageable.class)))
         .thenReturn(new PageImpl<>(matching));
 
     // When
@@ -154,7 +155,8 @@ class QueryMenuControllerImplTest {
         String.format("%s/v1/menu?searchTerm=%s", getBaseURL(port), searchTerm),
         SearchMenuResult.class);
     // Then
-    verify(menuRepositoryAdapter, times(1)).findAllByNameContaining(eq(searchTerm), any(Pageable.class));
+    verify(menuRepositoryAdapter, times(1))
+        .findAllByNameContaining(eq(searchTerm), any(Pageable.class));
   }
 
   @Test
@@ -186,7 +188,8 @@ class QueryMenuControllerImplTest {
   @Test
   void listMenusWithDefaultPagination() {
     // Given
-    when(menuRepositoryAdapter.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(createMenus(1)));
+    when(menuRepositoryAdapter.findAll(any(Pageable.class)))
+        .thenReturn(new PageImpl<>(createMenus(1)));
 
     // When
     var response =

@@ -2,11 +2,10 @@ package com.xxAMIDOxx.xxSTACKSxx.provider.azure.repository;
 
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.Optional;
 
 public class AzureMenuRepositoryAdapter implements MenuRepositoryAdapter {
 
@@ -14,7 +13,9 @@ public class AzureMenuRepositoryAdapter implements MenuRepositoryAdapter {
 
   public Page<Menu> findAllByRestaurantId(String restaurantId, Pageable pageable) {
 
-    Page<Menu> menus = azureMenuRepository.findAllByRestaurantId(restaurantId, pageable)
+    Page<Menu> menus =
+        azureMenuRepository
+            .findAllByRestaurantId(restaurantId, pageable)
             .map(this::azureMenuToMenu);
     return menus;
   }
@@ -26,22 +27,30 @@ public class AzureMenuRepositoryAdapter implements MenuRepositoryAdapter {
   }
 
   @Override
-  public Page<Menu> findAllByRestaurantIdAndName(String restaurantId, String name, Pageable pageable) {
-    Page<Menu> menus = azureMenuRepository.findAllByRestaurantIdAndName(restaurantId, name, pageable)
+  public Page<Menu> findAllByRestaurantIdAndName(
+      String restaurantId, String name, Pageable pageable) {
+    Page<Menu> menus =
+        azureMenuRepository
+            .findAllByRestaurantIdAndName(restaurantId, name, pageable)
             .map(this::azureMenuToMenu);
     return menus;
   }
 
   @Override
   public Page<Menu> findAllByNameContaining(String searchTerm, Pageable pageable) {
-    Page<Menu> menus = azureMenuRepository.findAllByNameContaining(searchTerm, pageable)
+    Page<Menu> menus =
+        azureMenuRepository
+            .findAllByNameContaining(searchTerm, pageable)
             .map(this::azureMenuToMenu);
     return menus;
   }
 
   @Override
-  public Page<Menu> findAllByRestaurantIdAndNameContaining(String restaurantId, String searchTerm, Pageable pageable) {
-    Page<Menu> menus = azureMenuRepository.findAllByRestaurantIdAndNameContaining(restaurantId, searchTerm, pageable)
+  public Page<Menu> findAllByRestaurantIdAndNameContaining(
+      String restaurantId, String searchTerm, Pageable pageable) {
+    Page<Menu> menus =
+        azureMenuRepository
+            .findAllByRestaurantIdAndNameContaining(restaurantId, searchTerm, pageable)
             .map(this::azureMenuToMenu);
     return menus;
   }
@@ -62,8 +71,7 @@ public class AzureMenuRepositoryAdapter implements MenuRepositoryAdapter {
 
   @Override
   public Page<Menu> findAll(Pageable pageable) {
-    Page<Menu> menus = azureMenuRepository.findAll(pageable)
-            .map(this::azureMenuToMenu);
+    Page<Menu> menus = azureMenuRepository.findAll(pageable).map(this::azureMenuToMenu);
     return menus;
   }
 
@@ -74,7 +82,9 @@ public class AzureMenuRepositoryAdapter implements MenuRepositoryAdapter {
 
   private AzureMenu menuToAzureMenu(Menu menu) {
     AzureMenu azureMenu;
-    azureMenu = new AzureMenu(menu.getId(),
+    azureMenu =
+        new AzureMenu(
+            menu.getId(),
             menu.getRestaurantId(),
             menu.getName(),
             menu.getDescription(),
@@ -86,7 +96,8 @@ public class AzureMenuRepositoryAdapter implements MenuRepositoryAdapter {
 
   private Menu azureMenuToMenu(AzureMenu azureMenu) {
     Menu menu;
-    menu = Menu.builder()
+    menu =
+        Menu.builder()
             .id(azureMenu.getId())
             .restaurantId(azureMenu.getRestaurantId())
             .name(azureMenu.getName())

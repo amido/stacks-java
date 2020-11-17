@@ -12,8 +12,6 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuUpdatedEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.CategoryDoesNotExistException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.ItemDoesNotExistsException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -21,13 +19,15 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
 /** @author ArathyKrishna */
 @Component
 public class DeleteItemHandler extends MenuBaseCommandHandler<DeleteItemCommand> {
 
   public DeleteItemHandler(
-      MenuRepositoryAdapter menuRepositoryAdapter, ApplicationEventPublisher applicationEventPublisher) {
+      MenuRepositoryAdapter menuRepositoryAdapter,
+      ApplicationEventPublisher applicationEventPublisher) {
     super(menuRepositoryAdapter, applicationEventPublisher);
   }
 

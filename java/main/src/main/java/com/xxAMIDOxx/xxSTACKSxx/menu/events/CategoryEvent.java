@@ -1,10 +1,9 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.events;
 
 import com.xxAMIDOxx.xxSTACKSxx.menu.commands.MenuCommand;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.ToString;
-
-import java.util.UUID;
 
 @Getter
 @ToString

@@ -3,6 +3,9 @@ package com.xxAMIDOxx.xxSTACKSxx.provider.azure.service;
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
 import com.xxAMIDOxx.xxSTACKSxx.menu.service.MenuQueryService;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +15,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @ConditionalOnProperty(name = "cloud-provider", havingValue = "azure")
 @Service("menuQueryService")
@@ -39,7 +38,8 @@ public class CosmosMenuQueryService implements MenuQueryService {
   public List<Menu> findAll(int pageNumber, int pageSize) {
 
     Page<Menu> page =
-        menuRepositoryAdapter.findAll(PageRequest.of(0, pageSize, Sort.by(Sort.Direction.ASC, NAME)));
+        menuRepositoryAdapter.findAll(
+            PageRequest.of(0, pageSize, Sort.by(Sort.Direction.ASC, NAME)));
 
     // This is specific and needed due to the way in which CosmosDB handles pagination
     // using a continuationToken and a limitation in the Swagger Specification.
@@ -62,7 +62,8 @@ public class CosmosMenuQueryService implements MenuQueryService {
   }
 
   @Override
-  public List<Menu> findAllByNameContaining(String searchTerm, Integer pageSize, Integer pageNumber) {
+  public List<Menu> findAllByNameContaining(
+      String searchTerm, Integer pageSize, Integer pageNumber) {
     return menuRepositoryAdapter
         .findAllByNameContaining(
             searchTerm, PageRequest.of(0, pageSize, Sort.by(Sort.Direction.ASC, NAME)))
@@ -70,7 +71,8 @@ public class CosmosMenuQueryService implements MenuQueryService {
   }
 
   @Override
-  public List<Menu> findAllByRestaurantIdAndNameContaining(UUID restaurantId, String searchTerm, Integer pageSize, Integer pageNumber) {
+  public List<Menu> findAllByRestaurantIdAndNameContaining(
+      UUID restaurantId, String searchTerm, Integer pageSize, Integer pageNumber) {
     return menuRepositoryAdapter
         .findAllByRestaurantIdAndNameContaining(
             restaurantId.toString(),

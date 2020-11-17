@@ -1,9 +1,8 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.commands;
 
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.UUID;
 
 @Getter
 @Setter

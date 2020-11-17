@@ -25,7 +25,7 @@ public interface GcpMenuRepository extends FirestoreReactiveRepository<GcpMenu> 
    * @param pageable pagination
    * @return page of menu
    */
-   Flux<GcpMenu> findAllByNameContaining(String searchTerm, Pageable pageable);
+  Flux<GcpMenu> findAllByNameContaining(String searchTerm, Pageable pageable);
 
   /**
    * Query is constructed OOTB - out of the box, executed and results are fetched based param
@@ -36,7 +36,8 @@ public interface GcpMenuRepository extends FirestoreReactiveRepository<GcpMenu> 
    * @param pageable pagination
    * @return page of menu
    */
-  Flux<GcpMenu> findAllByRestaurantIdAndNameContaining(String restaurantId, String searchTerm, Pageable pageable);
+  Flux<GcpMenu> findAllByRestaurantIdAndNameContaining(
+      String restaurantId, String searchTerm, Pageable pageable);
 
   /**
    * Query is constructed OOTB - out of the box, executed and results are fetched based param

@@ -1,10 +1,9 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.commands;
 
 import com.xxAMIDOxx.xxSTACKSxx.core.cqrs.command.ApplicationCommand;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.UUID;
 
 @Getter
 @Setter

@@ -15,6 +15,11 @@
   <name>gcp</name>
   <url>http://maven.apache.org</url>
 
+  <properties>
+    <spring-cloud-gcp-firestore.version>1.2.5.RELEASE</spring-cloud-gcp-firestore.version>
+  </properties>
+
+
   <dependencies>
       <dependency>
         <groupId>junit</groupId>
@@ -27,6 +32,13 @@
           <artifactId>core</artifactId>
           <version>1.0-SNAPSHOT</version>
       </dependency>
+
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-gcp-starter-data-firestore</artifactId>
+      <version>${spring-cloud-gcp-firestore.version}</version>
+    </dependency>
+
   </dependencies>
 
 </project>

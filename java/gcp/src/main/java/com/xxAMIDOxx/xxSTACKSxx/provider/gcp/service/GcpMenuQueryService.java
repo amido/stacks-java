@@ -3,6 +3,9 @@ package com.xxAMIDOxx.xxSTACKSxx.provider.gcp.service;
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
 import com.xxAMIDOxx.xxSTACKSxx.menu.service.MenuQueryService;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @ConditionalOnProperty(name = "cloud-provider", havingValue = "gcp")
 @Service("menuQueryService")
@@ -38,7 +37,8 @@ public class GcpMenuQueryService implements MenuQueryService {
   public List<Menu> findAll(int pageNumber, int pageSize) {
     System.out.println("GOTCHA GcpMenuQueryService");
     Page<Menu> page =
-        menuRepositoryAdapter.findAll(PageRequest.of(0, pageSize, Sort.by(Sort.Direction.ASC, NAME)));
+        menuRepositoryAdapter.findAll(
+            PageRequest.of(0, pageSize, Sort.by(Sort.Direction.ASC, NAME)));
 
     return page.getContent();
   }

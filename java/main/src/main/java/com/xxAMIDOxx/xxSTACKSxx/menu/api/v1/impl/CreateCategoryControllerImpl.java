@@ -1,17 +1,16 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 
+import static com.xxAMIDOxx.xxSTACKSxx.menu.mappers.RequestToCommandMapper.map;
+
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.CreateCategoryController;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.request.CreateCategoryRequest;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.ResourceCreatedResponse;
 import com.xxAMIDOxx.xxSTACKSxx.menu.handlers.CreateCategoryHandler;
+import java.util.UUID;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
-import java.util.UUID;
-
-import static com.xxAMIDOxx.xxSTACKSxx.menu.mappers.RequestToCommandMapper.map;
 
 @RestController
 public class CreateCategoryControllerImpl implements CreateCategoryController {

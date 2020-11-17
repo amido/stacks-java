@@ -12,13 +12,12 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuUpdatedEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.CategoryDoesNotExistException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.ItemAlreadyExistsException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.stereotype.Component;
 
 @Component
 public class CreateItemHandler extends MenuBaseCommandHandler<CreateItemCommand> {
@@ -26,7 +25,8 @@ public class CreateItemHandler extends MenuBaseCommandHandler<CreateItemCommand>
   private UUID itemId;
 
   public CreateItemHandler(
-          MenuRepositoryAdapter menuRepositoryAdapter, ApplicationEventPublisher applicationEventPublisher) {
+      MenuRepositoryAdapter menuRepositoryAdapter,
+      ApplicationEventPublisher applicationEventPublisher) {
     super(menuRepositoryAdapter, applicationEventPublisher);
   }
 

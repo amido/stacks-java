@@ -1,12 +1,20 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v2.impl;
 
+import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
+import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.MenuDTO;
-import static org.assertj.core.api.BDDAssertions.then;
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.mappers.DomainToDtoMapper;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import java.util.Optional;
+import java.util.UUID;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +24,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.util.Optional;
-import java.util.UUID;
-
-import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
-import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration(

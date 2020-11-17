@@ -1,5 +1,13 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 
+import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
+import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
+import static java.util.UUID.fromString;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
+
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
 import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
 import com.xxAMIDOxx.xxSTACKSxx.core.api.dto.ErrorResponse;
@@ -7,6 +15,9 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.request.CreateMenuRequest;
 import com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.dto.response.ResourceCreatedResponse;
 import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.UUID;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +30,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.util.Collections;
-import java.util.Objects;
-import java.util.UUID;
-
-import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.MenuHelper.createMenu;
-import static com.xxAMIDOxx.xxSTACKSxx.util.TestHelper.getBaseURL;
-import static java.util.UUID.fromString;
-import static org.assertj.core.api.BDDAssertions.then;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration(

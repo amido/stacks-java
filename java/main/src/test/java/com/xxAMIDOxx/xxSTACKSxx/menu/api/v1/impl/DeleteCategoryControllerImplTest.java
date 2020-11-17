@@ -1,27 +1,5 @@
 package com.xxAMIDOxx.xxSTACKSxx.menu.api.v1.impl;
 
-import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
-import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
-import com.xxAMIDOxx.xxSTACKSxx.core.api.dto.ErrorResponse;
-import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Category;
-import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
-import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.test.context.ActiveProfiles;
-
-import java.util.List;
-import java.util.Optional;
-
 import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.CategoryHelper.createCategories;
 import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.CategoryHelper.createCategory;
 import static com.xxAMIDOxx.xxSTACKSxx.menu.domain.ItemHelper.createItem;
@@ -35,6 +13,27 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.OK;
+
+import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosAutoConfiguration;
+import com.microsoft.azure.spring.autoconfigure.cosmosdb.CosmosDbRepositoriesAutoConfiguration;
+import com.xxAMIDOxx.xxSTACKSxx.core.api.dto.ErrorResponse;
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Category;
+import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
+import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
+import java.util.List;
+import java.util.Optional;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration(

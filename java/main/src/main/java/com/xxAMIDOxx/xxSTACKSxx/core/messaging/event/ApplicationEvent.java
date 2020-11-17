@@ -1,13 +1,12 @@
 package com.xxAMIDOxx.xxSTACKSxx.core.messaging.event;
 
+import static java.time.ZonedDateTime.now;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.xxAMIDOxx.xxSTACKSxx.core.operations.OperationContext;
-
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.UUID;
-
-import static java.time.ZonedDateTime.now;
 
 public abstract class ApplicationEvent extends OperationContext implements Serializable {
 

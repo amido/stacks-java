@@ -8,10 +8,9 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.exception.MenuNotFoundException;
 import com.xxAMIDOxx.xxSTACKSxx.menu.mappers.DomainToDtoMapper;
 import com.xxAMIDOxx.xxSTACKSxx.menu.service.MenuQueryService;
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 @RestController
 public class QueryMenuControllerImplV2 implements QueryMenuControllerV2 {

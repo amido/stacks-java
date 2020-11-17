@@ -6,12 +6,11 @@ import com.xxAMIDOxx.xxSTACKSxx.menu.domain.Menu;
 import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuDeletedEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.events.MenuEvent;
 import com.xxAMIDOxx.xxSTACKSxx.menu.repository.MenuRepositoryAdapter;
-import org.springframework.stereotype.Component;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.stereotype.Component;
 
 /**
  * Handler for deleting menu
@@ -22,7 +21,8 @@ import java.util.UUID;
 public class DeleteMenuHandler extends MenuBaseCommandHandler<DeleteMenuCommand> {
 
   public DeleteMenuHandler(
-      MenuRepositoryAdapter menuRepositoryAdapter, ApplicationEventPublisher applicationEventPublisher) {
+      MenuRepositoryAdapter menuRepositoryAdapter,
+      ApplicationEventPublisher applicationEventPublisher) {
     super(menuRepositoryAdapter, applicationEventPublisher);
   }
 
