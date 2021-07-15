@@ -34,13 +34,6 @@ steps:
 
   - task: Bash@3
     inputs:
-      filePath: "${{ parameters.pipeline_scripts_directory }}/util-azure-register-pod-identity.bash"
-    target:
-      container: ${{ parameters.docker_terraform_container }}
-    displayName: "Register Pod Identity Previews"
-
-  - task: Bash@3
-    inputs:
       filePath: "${{ parameters.pipeline_scripts_directory }}/deploy-azure-terraform-init.bash"
       arguments: >
         -a "${{ parameters.terraform_backend_azure_client_id }}"
